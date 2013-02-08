@@ -1,0 +1,31 @@
+jQuery MultiSelect
+
+* Author:
+Luca Lazzarini ( lzzluca@gmail.com  http://nerdstuckathome.wordpress.com/ )
+
+* Co author: 
+Karol Kowalski ( https://www.facebook.com/karolk  https://github.com/karolk )
+
+* License:
+Dual licensed under the MIT (http://mit-license.org/) and GPL (http://www.gnu.org/licenses/gpl.html) licenses.
+
+* On the web:
+- http://nerdstuckathome.wordpress.com/2012/08/10/multi-select-avoiding-ctrl-button/
+- https://github.com/lzzluca/MultiSelect/
+
+* Version:
+1.1
+
+* Depends:
+jQuery framework: http://www.jquery.com
+
+* Description:
+Multi selection on the select tag without holding the <ctrl> button; the plugin doesn't add any additional HTML.
+
+* How to build it:
+The source file is src-min/multiselect-min.js: this is the only file you need to include in your pages.
+Edit the source in src-dev/ and run the Makefile into src-min/ to get the minimized source.
+In the dependencies folder there is the jQuery framework, version 1.7.2: this is the version i used in my tests.
+
+
+I wrote it in my current company, WCN (wcn.co.uk), and i was allowed to release it as open source. Thank you (particularly to Jack Hobson)!
