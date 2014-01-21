@@ -55,7 +55,7 @@
         return this.$select.find("option." + this.classSelected);
     };
     selection_API.prototype.resetSelection = function() {
-        for(var i = 0, selection = this.getAll(); this.deselect(selection[i]); i++);
+        for(var i = 0, selection = this.getAll(); this.deselect(selection[i]); i++){};
     };
     selection_API.prototype.getAllVal = function() {
         var ret = [];
@@ -206,6 +206,10 @@
             // optional features
 
             settings.enableCategoriesSel && methods._applyCategoriesSelection.call($this);
+
+            // this keeps the previous selection (thanks to a dev I don't know the name of!)
+
+            settings.keepPrevSelection && $this.find('option[selected=selected]').addClass(settings.css_class_selected);
 
         });
 
