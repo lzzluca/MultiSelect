@@ -128,7 +128,8 @@
         var settings = $.extend({
             size: 10,
             css_class_selected: "selected",
-            enableCategoriesSel: false
+            enableCategoriesSel: false,
+            keepPrevSelection: true
         }, options);
 
         var methods = {
