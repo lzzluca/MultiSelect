@@ -9,10 +9,14 @@
 DEBUG = 0
 
 # Set the source directory
-SRC_FOLDER = ../src-dev/
+SRC_FOLDER = ../src/
 
 # Create the list of modules
-MODULES = $(SRC_FOLDER)multiselect.js
+MODULES = $(SRC_FOLDER)multiselect.js \
+					$(SRC_FOLDER)bootstrap.js \
+					$(SRC_FOLDER)selection.js \
+					$(SRC_FOLDER)categories_selection.js
+
 
 # Output folder, name and path for modules
 OUTPUT_FOLDER =

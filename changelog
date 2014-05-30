@@ -1,0 +1,5 @@
+1.2: Made the plugin modular; delete the folder src-dev-modules-alpha because 
+     it was redundant (it purpose was to provide a modular Multiselect).
+		 Merged folder src-dev and src-min in the folder src.
+1.1: Added categories selection features
+     Cleaned the repo history on GitHub
