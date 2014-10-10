@@ -40,7 +40,10 @@
       size: 10,
       css_class_selected: "selected",
       enableCategoriesSel: false,
-      keepPrevSelection: true
+      keepPrevSelection: true,
+      // note: it is false by default because it is to be tested but would make
+      // sense to have it as true by default
+      allowSubmit: false
     }, options);
 
     // modules available for the Multiselect
@@ -53,11 +56,20 @@
       _attachSelectionAtOnChange: function() {
         this.change(function() {
           var list = $(this).find(":selected"),
-              selMethods = $.data(this, "MultiSelect_selection");
-          for (var i = 0, $option; list[i]; i++) {
+              selMethods = $.data(this, "MultiSelect_selection"),
+              $clone = $.data(this, "MultiSelect_clone");
+          for (var i = 0, $option, $option_clone; list[i]; i++) {
             $option = $(list[i]);
             selMethods.toggle( $option.get(0) );
             $option.attr("selected", false);
+
+            // if the clone select is defined, the selection is update on it too
+            if( $clone ) {
+              var $option_clone = $clone.children()[ $option.prop("index") ];
+              $option_clone = $( $option_clone );
+              // TODO check "selected" should be equals "selected" or true?
+              $option_clone.attr("selected") === "selected" ? $option_clone.removeAttr("selected") : $option_clone.attr("selected", "selected");
+            }
           }
         });
       },
@@ -71,6 +83,18 @@
 
       _applyCategoriesSelection: function() {
         new modules.categories_selection(this);
+      },
+
+      _createClone : function($this) {
+        var $clone = $("<select></select>");                                      
+        $clone.prop( "id", $this.prop("id") + "_clone" );                                            
+        $clone.attr( "name", $this.attr("name") );                    
+        $clone.attr( "multiple", true );
+        $clone.html( $this.html() );                                  
+        $clone.hide();                                                        
+        $clone.insertAfter( $this );    
+        $this.attr( "name", $this.attr("name") + "_not_submitted" );                                
+        $this.data( "MultiSelect_clone", $clone );
       }
 
     };
@@ -88,13 +112,17 @@
       }
       $this.attr("size", settings.size);
 
-      // optional features
+      // generates clickable shortcuts to toggle all the options into an optgroup
 
       settings.enableCategoriesSel && methods._applyCategoriesSelection.call($this);
 
       // this keeps the previous selection (thanks to a dev I don't know the name of!)
 
       settings.keepPrevSelection && $this.find('option[selected=selected]').addClass(settings.css_class_selected);
+
+      // builds a clone select (that gets the name of the original) to be submitted
+
+      settings.allowSubmit && $this.attr("name") && methods._createClone($this);
 
     });
 

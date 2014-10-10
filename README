@@ -6,6 +6,9 @@ Luca Lazzarini ( lzzluca@gmail.com http://nerdstuckathome.wordpress.com/ )
 * Co author:
 Karol Kowalski ( https://www.facebook.com/karolk https://github.com/karolk )
 
+* Special thanks for the "allowSubmit" flag to Ewan Bain
+  ( https://www.facebook.com/ewan.bain https://github.com/erbain )
+
 * License:
 Dual licensed under the MIT (http://mit-license.org/) and GPL (http://www.gnu.org/licenses/gpl.html) licenses.
 
@@ -14,7 +17,7 @@ Dual licensed under the MIT (http://mit-license.org/) and GPL (http://www.gnu.or
 - https://github.com/lzzluca/MultiSelect/
 
 * Version:
-1.2
+1.3
 
 * Depends:
 jQuery framework: http://www.jquery.com
@@ -28,6 +31,7 @@ Edit the sources in src/ and run the Makefile (by make) to get the minimized sou
 In the dependencies folder there is the jQuery framework, version 1.7.2: this is the version i used in my tests.
 
 * TODO:
+- The dependencies are wrong: jQuery ui is not needed, just jQuery!
 - Improve comments (by JSDoc to generate autodocumentation)
 - Add tests
 - Add sort options module
