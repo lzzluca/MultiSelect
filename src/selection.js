@@ -48,4 +48,4 @@
   // the function contructor is registered as module
   $.fn.MultiSelect.modules['selection_API'] = selection_API;
 
-})(); 
+})();

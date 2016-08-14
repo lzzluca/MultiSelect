@@ -13,8 +13,8 @@
 
 (function () {
 
-  if( !$.valHooks['select'].original_get) {      
-    
+  if( !$.valHooks['select'].original_get) {
+
     $.valHooks['select'].original_get = $.valHooks["select"].get;
 
     $.valHooks['select'].get = function(el) {

@@ -4,7 +4,7 @@
  * Author:
  * Luca Lazzarini ( lzzluca@gmail.com  http://nerdstuckathome.wordpress.com/ )
  *
- * Co author: 
+ * Co author:
  * Karol Kowalski ( https://github.com/karolk )
  *
  * Dual licensed under the MIT (MIT-LICENSE.txt)
@@ -86,14 +86,14 @@
       },
 
       _createClone : function($this) {
-        var $clone = $("<select></select>");                                      
-        $clone.prop( "id", $this.prop("id") + "_clone" );                                            
-        $clone.attr( "name", $this.attr("name") );                    
+        var $clone = $("<select></select>");
+        $clone.prop( "id", $this.prop("id") + "_clone" );
+        $clone.attr( "name", $this.attr("name") );
         $clone.attr( "multiple", true );
-        $clone.html( $this.html() );                                  
-        $clone.hide();                                                        
-        $clone.insertAfter( $this );    
-        $this.attr( "name", $this.attr("name") + "_not_submitted" );                                
+        $clone.html( $this.html() );
+        $clone.hide();
+        $clone.insertAfter( $this );
+        $this.attr( "name", $this.attr("name") + "_not_submitted" );
         $this.data( "MultiSelect_clone", $clone );
       }
 
@@ -101,7 +101,7 @@
 
     // --- Main --- //
 
-    var ret = [];    
+    var ret = []
     this.each(function() {
 
       var $this = $(this);
@@ -127,9 +127,9 @@
     });
 
     return ret;
-  };    
+  };
 
-  // modules hashmap: here is where the modules should be registered 
+  // modules hashmap: here is where the modules should be registered
   $.fn.MultiSelect.modules = {};
 
 })( jQuery );
