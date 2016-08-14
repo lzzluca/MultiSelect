@@ -54,12 +54,22 @@
     var methods = {
 
       _attachSelectionAtOnChange: function() {
-        this.change(function() {
+        this.change(function(e) {
           var list = $(this).find(":selected"),
               selMethods = $.data(this, "MultiSelect_selection"),
+              // the onchange doesn't listen to the keyboard, so this is a
+              // workaround: if many elements were selected at once, then I
+              // assume the shift key was pressed
+              isShiftKeyPressed = list.length > 1,
               $clone = $.data(this, "MultiSelect_clone");
           for (var i = 0, $option, $option_clone; list[i]; i++) {
             $option = $(list[i]);
+
+            // fix for issue #2
+            if( isShiftKeyPressed && (this.selectedIndex === $option.get(0).index) ) {
+              continue;
+            }
+
             selMethods.toggle( $option.get(0) );
             $option.attr("selected", false);
 
@@ -68,7 +78,8 @@
               var $option_clone = $clone.children()[ $option.prop("index") ];
               $option_clone = $( $option_clone );
               // TODO check "selected" should be equals "selected" or true?
-              $option_clone.attr("selected") === "selected" ? $option_clone.removeAttr("selected") : $option_clone.attr("selected", "selected");
+              $option_clone.attr("selected") === "selected" ?
+                $option_clone.removeAttr("selected") : $option_clone.attr("selected", "selected");
             }
           }
         });
